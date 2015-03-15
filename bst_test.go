@@ -118,3 +118,30 @@ func TestTreeDelete(t *testing.T) {
 	}
 
 }
+
+func TestBreadth(t *testing.T) {
+
+	tree := NewBinarySearchTree()
+	
+	tree.Insert(5)
+	tree.Insert(4)
+	tree.Insert(6)
+	tree.Insert(2)
+	tree.Insert(7)
+
+	nodes := tree.Breadth()
+
+	if nodes.Length() != 5 {
+		t.Error("Breadth first search failed.")
+	}
+
+	if nodes.Get(0).(TreeNode).Value != 5 {
+		t.Error("Breadth first search failed.")
+	}
+
+	if nodes.Get(1).(TreeNode).Value != 4 {
+		t.Error("Breadth first search failed.")
+	}
+
+
+}

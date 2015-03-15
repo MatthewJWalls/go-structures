@@ -150,3 +150,25 @@ func TestDelete(t *testing.T) {
 
 }
 
+func TestSet(t *testing.T) {
+
+	q := NewLinkedList()
+
+	q.PushBack(1)
+	q.PushBack(2)
+	q.Delete(0)
+	q.PushBack(1)
+	q.PushBack(3)
+	q.Delete(0)
+
+	if q.first.Value.(int) != 1  {
+		t.Error("LinkedList test set failed.")
+	}
+
+	if q.last.Value.(int) != 3  {
+		t.Error("LinkedList test set failed.")
+	}
+
+
+}
+

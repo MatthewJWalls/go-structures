@@ -30,6 +30,33 @@ func length(n *TreeNode) int {
 
 }
 
+func (this *BinarySearchTree) Breadth() *SingleList {
+
+	output := NewLinkedList()
+    q := NewLinkedList()
+
+	q.PushBack(*this.root)
+
+    for q.Length() != 0 {
+
+        n := q.Get(0).(TreeNode)
+        q.Delete(0)
+
+        if n.left != nil {
+            q.PushBack(*n.left)
+        }
+
+        if n.right != nil {
+            q.PushBack(*n.right)
+        }
+
+		output.PushBack(n)
+
+    }
+
+	return output
+}
+
 func (this *BinarySearchTree) Contains(val int) bool {
 
 	if this.root == nil {

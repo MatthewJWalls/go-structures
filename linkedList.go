@@ -95,12 +95,14 @@ func (this *SingleList) Delete(index int) {
 
 		if counter == index && prev == nil {
 			// deleted first elem
-			this.first = nil
-			this.last = nil
+			this.first = this.first.next
+			if this.first == nil {
+				this.last = nil
+			}
 			return
 		} else if counter == index && current.next == nil  {
 			// deleted last elem
-			prev.next = current.next
+			prev.next = nil
 			this.last = prev
 			return
 		} else if counter == index {
