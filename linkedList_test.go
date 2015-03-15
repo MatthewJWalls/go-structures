@@ -57,6 +57,10 @@ func TestLength(t *testing.T) {
 
 	list := NewLinkedList()
 
+	if list.Length() != 0 {
+		t.Error("Empty list did not have length 0")
+	}
+
 	list.Push("durr")
 	list.Push("hurr")
 
