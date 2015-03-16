@@ -15,14 +15,6 @@ func (this *TrieNode) isLeaf() bool {
 
 func (this *TrieNode) getChild(char string) *TrieNode {
 
-	if this == nil {
-		panic("This was nil")
-	}
-
-	if this.children == nil {
-		panic("Children was nil.")
-	}
-
 	for _, n := range(this.children) {
 		if n.char == char {
 			return n
@@ -94,10 +86,6 @@ func (this *Trie) Complete(prefix string) []string {
 	// step 2. get all branches from this node
 
 	this.branches(&collector, startPath, startNode)
-
-	if len(collector) == 0 {
-		panic("We collected NOTHING.")
-	}
 
 	var out []string
 
