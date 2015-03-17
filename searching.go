@@ -1,7 +1,5 @@
 package main
 
-import "log"
-
 func binarySearch(arr []int, val int) int {
 
 	midpoint := len(arr)/2
