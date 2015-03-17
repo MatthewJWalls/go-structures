@@ -7,10 +7,15 @@ type PathList [][]*TrieNode
 type TrieNode struct {
 	char string
 	children []*TrieNode
+	doStop bool
 }
 
 func (this *TrieNode) isLeaf() bool {
 	return len(this.children) == 0
+}
+
+func (this *TrieNode) isStop() bool {
+	return this.doStop
 }
 
 func (this *TrieNode) getChild(char string) *TrieNode {
@@ -63,6 +68,9 @@ func (this *Trie) Insert(word string) {
 
 	}
 
+	// signify that this was a word end
+	marker.doStop = true
+
 }
 
 func (this *Trie) Complete(prefix string) []string {
@@ -105,9 +113,13 @@ func (this *Trie) branches(branches *PathList, path []*TrieNode, n *TrieNode) {
 
 	path = append(path, n)
 
-	if n.isLeaf() {
+	if n.doStop {
+		// this was a word end, collect it into branches
 		*branches = append(*branches, path)
-	} else {
+	}
+
+	if ! n.isLeaf() {
+		// recurse down the children
 		for _, c := range(n.children) {
 			this.branches(branches, path, c)
 		}
@@ -120,5 +132,5 @@ func NewTrie() *Trie {
 }
 
 func NewTrieNode(char string) *TrieNode {
-	return &TrieNode{char, make([]*TrieNode, 0, 0)}
+	return &TrieNode{char, make([]*TrieNode, 0, 0), false}
 }

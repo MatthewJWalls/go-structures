@@ -26,6 +26,18 @@ func TestTrieInsert(t *testing.T) {
 
 }
 
+func TestTrieInsertSubstrings(t *testing.T) {
+
+	trie := NewTrie()
+	trie.Insert("hello")
+	trie.Insert("hell")
+
+	if len(trie.Complete("hel")) != 2 {
+		t.Error("Substrings failed to work.")
+	}
+
+}
+
 func TestGetCompletions(t *testing.T) {
 
 	trie := NewTrie()
