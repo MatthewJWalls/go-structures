@@ -50,7 +50,7 @@ func quicksort(arr []int) []int {
 
 	log.Print(arr)
 
-	if len(arr) > 1 {
+	if len(arr) > 2 {
 
 		pivot  = arr[len(arr)/2]
 		left  := 0
@@ -80,9 +80,7 @@ func quicksort(arr []int) []int {
 				arr[left] = arr[right]
 				arr[right] = tmp
 				left++
-				right++
-			} else {
-				panic("NO SWAP?")
+				right--
 			}
 
 		}
