@@ -1,5 +1,7 @@
 package main
 
+import "log"
+
 func mergeSort(arr []int) []int {
 
 	if len(arr) <= 1 {
@@ -41,3 +43,72 @@ func merge(left []int, right []int) []int {
 	return out
 
 }
+
+func quicksort(arr []int) []int {
+
+	var pivot int
+
+	log.Print(arr)
+
+	if len(arr) > 1 {
+
+		pivot  = arr[len(arr)/2]
+		left  := 0
+		right := len(arr)-1
+
+		log.Printf("Using pivot %d", pivot)
+
+		for left <= right {
+
+			log.Printf("Looking for a left")
+
+			for arr[left] < pivot {
+				left++
+			} 
+
+			log.Printf("Looking for a right")
+
+			for arr[right] > pivot {
+				right--
+			}
+
+			log.Printf("Looking at swapping %d and %d", arr[left], arr[right])
+
+			if left <= right {
+				log.Printf("Swapping %d and %d", arr[left], arr[right])
+				tmp := arr[left]
+				arr[left] = arr[right]
+				arr[right] = tmp
+				left++
+				right++
+			} else {
+				panic("NO SWAP?")
+			}
+
+		}
+
+		lefter  := quicksort(arr[:left])
+		righter := quicksort(arr[left:])
+
+		return append(lefter, righter...)
+
+	} else {
+
+		return arr
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
