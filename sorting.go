@@ -1,7 +1,5 @@
 package main
 
-import "log"
-
 func mergeSort(arr []int) []int {
 
 	if len(arr) <= 1 {

@@ -63,7 +63,19 @@ func TestQuickSort(t *testing.T) {
 
 	output := quicksort([]int{5, 0, 3, 2, 1, 6, 6})
 
-	if output[0] != 0 {
+	if ! intArraysEqual(output, []int{0, 1, 2, 3, 5, 6, 6}) {
+		t.Error("Incorrect value after quick sort.")
+	}
+
+	if ! intArraysEqual(quicksort([]int{0, -1, -2, -3}), []int{-3, -2, -1, 0}) {
+		t.Error("Incorrect value after quick sort.")
+	}
+
+	if ! intArraysEqual(quicksort([]int{1, 1, 1}), []int{1, 1, 1}) {
+		t.Error("Incorrect value after quick sort.")
+	}
+
+	if ! intArraysEqual(quicksort([]int{6, 1, 1}), []int{1, 1, 6}) {
 		t.Error("Incorrect value after quick sort.")
 	}
 
