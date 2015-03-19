@@ -46,33 +46,30 @@ func merge(left []int, right []int) []int {
 
 func quicksort(arr []int) []int {
 
-	var pivot int
+	log.Print("ok now looking at: ", arr, "with length ", len(arr))
 
-	log.Print(arr)
+	if len(arr) > 1 {
+		log.Print("Gonna tackle it because > 1")
+	}
 
-	if len(arr) > 2 {
+	if len(arr) > 1 {
 
-		pivot  = arr[len(arr)/2]
+		//pivotIndex := len(arr)/2
+		pivot  := arr[len(arr)/2]
 		left  := 0
 		right := len(arr)-1
 
 		log.Printf("Using pivot %d", pivot)
 
-		for left <= right {
-
-			log.Printf("Looking for a left")
+		for left <= right  {
 
 			for arr[left] < pivot {
 				left++
 			} 
 
-			log.Printf("Looking for a right")
-
 			for arr[right] > pivot {
 				right--
 			}
-
-			log.Printf("Looking at swapping %d and %d", arr[left], arr[right])
 
 			if left <= right {
 				log.Printf("Swapping %d and %d", arr[left], arr[right])
@@ -85,13 +82,15 @@ func quicksort(arr []int) []int {
 
 		}
 
-		lefter  := quicksort(arr[:left])
-		righter := quicksort(arr[left:])
+		log.Print("Finished swaps. Going to merge.")
+		lefter  := quicksort(arr[:right+1])
+		righter := quicksort(arr[left+1:])
 
-		return append(lefter, righter...)
+		return append(append(lefter, pivot), righter...)
 
 	} else {
 
+		log.Print("skipped it")
 		return arr
 
 	}

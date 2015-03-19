@@ -68,7 +68,7 @@ func TestQuickSort(t *testing.T) {
 		t.Error("Incorrect value after quick sort.")
 	}
 
-	log.Print(quicksort([]int{5, 3, 2, 1, 6}))
-	log.Print(quicksort([]int{0, 6, 5, 4, 3, 9, 1}))
+	log.Print("---")
+	log.Print("final: ", quicksort([]int{5, 3, 2, 1, 6}))
 
 }
