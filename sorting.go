@@ -82,12 +82,14 @@ func quicksort(arr []int) []int {
 		}
 
 		log.Print("  Finished swaps.")
-		log.Print("  sorting ", arr[:right], " and ", arr[left:] )
-		lefter  := quicksort(arr[:right])
-		righter := quicksort(arr[left:])
+		pindex := len(arr)/2
+		log.Print("  sorting ", arr[:pindex], " and ", arr[pindex:] )
+		lefter  := quicksort(arr[:pindex])
+		righter := quicksort(arr[pindex:])
 
-		log.Print("  appending ", lefter, " and ", pivot, " and", righter)
-		return append(append(lefter, pivot), righter...)
+		log.Print("  appending ", lefter, " and", righter)
+		log.Print("giving ", append(lefter, righter...))
+		return append(lefter, righter...)
 
 	} else {
 
@@ -97,16 +99,4 @@ func quicksort(arr []int) []int {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 

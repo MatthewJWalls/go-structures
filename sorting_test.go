@@ -2,7 +2,6 @@ package main
 
 import (
 	"testing"
-	"log"
 )
 
 func TestMerge(t *testing.T){
@@ -62,13 +61,10 @@ func TestMergeSort(t *testing.T){
 
 func TestQuickSort(t *testing.T) {
 
-	output := quicksort([]int{5, 3, 2, 1, 6})
+	output := quicksort([]int{5, 0, 3, 2, 1, 6, 6})
 
-	if output[0] != 1 {
+	if output[0] != 0 {
 		t.Error("Incorrect value after quick sort.")
 	}
-
-	log.Print("---")
-	log.Print("final: ", quicksort([]int{5, 3, 2, 1, 6}))
 
 }
