@@ -95,6 +95,8 @@ func (this *Trie) Complete(prefix string) []string {
 
 	this.branches(&collector, startPath, startNode)
 
+	// step 3. turn the branch paths into a string
+
 	var out []string
 
 	for _, path := range(collector) {
@@ -118,11 +120,9 @@ func (this *Trie) branches(branches *PathList, path []*TrieNode, n *TrieNode) {
 		*branches = append(*branches, path)
 	}
 
-	if ! n.isLeaf() {
-		// recurse down the children
-		for _, c := range(n.children) {
-			this.branches(branches, path, c)
-		}
+	// recurse down the children
+	for _, c := range(n.children) {
+		this.branches(branches, path, c)
 	}
 
 }
